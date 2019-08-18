@@ -19,9 +19,9 @@ class App extends Component {
   };
 
   addDecimal = val => {
-    (this.state.input.indexOf(".") === -1 && this.state.input !== "") ?
-        this.setState({input: this.state.input + val}) :
-        this.setState({input: this.state.input})
+     if (this.state.input.indexOf(".") === -1 && this.state.input !== "") {
+       this.setState({input: this.state.input + val})
+     }
   };
 
   clearInput = () => {
@@ -81,14 +81,12 @@ class App extends Component {
       this.setState({
         input: "",
       });
-
-    }else {
+    } else {
       this.setState({
         input: this.state.input.slice(0, this.state.input.length - 1),
       });
     }
   };
-
 
   count = () => {
     this.state.currentNumber = this.state.input;
@@ -98,8 +96,6 @@ class App extends Component {
               Number(this.state.currentNumber)
         }
       );
-      console.log(parseInt(this.state.previousNumber));
-      console.log(parseInt(this.state.currentNumber));
     } else if (this.state.operator === "subtract"){
       this.setState({
             input: Number(this.state.previousNumber) -
@@ -126,9 +122,6 @@ class App extends Component {
       );
     }
   };
-
-
-
   render() {
     return (
         <div className="App">
@@ -171,5 +164,4 @@ class App extends Component {
     );
   }
 }
-
 export default App;
